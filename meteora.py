@@ -39,7 +39,7 @@ if response.status_code == 200:
     df['apr'] = df['apr'].astype(float)
 
     # Aplicar filtros
-    query = f"address.str.contains('{address}') & pair.str.contains('{name}') & liquidity >= {liquidity_min} & liquidity <= {liquidity_max} & apr >= {apr_min} & apr <= {apr_max}"
+    query = f"address.str.contains('{address}') & name.str.contains('{name}') & liquidity >= {liquidity_min} & liquidity <= {liquidity_max} & apr >= {apr_min} & apr <= {apr_max}"
     filtered_df = filter_dataframe(df, query)
 
     # Mostrar resultados
