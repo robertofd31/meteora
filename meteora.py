@@ -3,11 +3,9 @@
 # Introduce tu wallet
 # Introdce una address/pair y te decimos la mas rentable
 
-
 import streamlit as st
 import requests
 import pandas as pd
-import math
 
 # Función para filtrar el DataFrame
 def filter_dataframe(df, query):
@@ -29,9 +27,9 @@ if response.status_code == 200:
     address = st.sidebar.text_input("Dirección (Address):")
     name = st.sidebar.text_input("Nombre (Name):")
     liquidity_min = st.sidebar.number_input("Liquidez Mínima (Liquidity Min):", min_value=0.0)
-    liquidity_max = st.sidebar.number_input("Liquidez Máxima (Liquidity Max):", min_value=0.0, value=math.inf)
+    liquidity_max = st.sidebar.number_input("Liquidez Máxima (Liquidity Max):", min_value=0.0, value=1e20)
     apr_min = st.sidebar.number_input("APR Mínimo (APR Min):", min_value=0.0)
-    apr_max = st.sidebar.number_input("APR Máximo (APR Max):", min_value=0.0, value=math.inf)
+    apr_max = st.sidebar.number_input("APR Máximo (APR Max):", min_value=0.0, value=1e20)
 
     # Aplicar filtros
     query = f"address.str.contains('{address}') & name.str.contains('{name}') & liquidity >= {liquidity_min} & liquidity <= {liquidity_max} & apr >= {apr_min} & apr <= {apr_max}"
