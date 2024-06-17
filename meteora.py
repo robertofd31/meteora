@@ -31,6 +31,10 @@ if response.status_code == 200:
     apr_min = st.sidebar.number_input("APR Mínimo (APR Min):", min_value=0.0)
     apr_max = st.sidebar.number_input("APR Máximo (APR Max):", min_value=0.0, value=1e20)
 
+    # Convertir los valores de liquidez y APR a números flotantes
+    df['liquidity'] = df['liquidity'].astype(float)
+    df['apr'] = df['apr'].astype(float)
+
     # Aplicar filtros
     query = f"address.str.contains('{address}') & name.str.contains('{name}') & liquidity >= {liquidity_min} & liquidity <= {liquidity_max} & apr >= {apr_min} & apr <= {apr_max}"
     filtered_df = filter_dataframe(df, query)
