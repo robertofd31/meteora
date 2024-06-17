@@ -23,7 +23,7 @@ if response.status_code == 200:
     df = pd.DataFrame(data)
 
     # Seleccionar solo las columnas necesarias
-    df = df[['address', 'pair', 'bin_step', 'apr', 'apy', 'liquidity', 'base_fee_percentage']]
+    df = df[['address', 'name', 'bin_step', 'apr', 'apy', 'liquidity', 'base_fee_percentage']]
 
     # Filtros
     st.sidebar.title("Filtros")
